@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\ListsController;
-use App\Models\Lists;
+use App\Http\Controllers\Api\TodoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +19,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/allLists', [ListsController::class, 'index']);
-Route::post('/createList', [ListsController::class, 'store']);
-Route::post('/updateList/{id}', [ListsController::class, 'update']);
-Route::post('/updateStatus/{id}', [ListsController::class, 'updateStatus']);
-Route::post('/checkAll', [ListsController::class, 'checkAll']);
-Route::post('/uncheckAll', [ListsController::class, 'uncheckAll']);
-Route::delete('/deleteList/{id}', [ListsController::class, 'destroy']);
-Route::delete('/clearCompleted', [ListsController::class, 'clearCompleted']);
+Route::get('/allLists', [TodoController::class, 'index']);
+Route::post('/createList', [TodoController::class, 'store']);
+Route::post('/updateList/{id}', [TodoController::class, 'update']);
+Route::post('/updateStatus/{id}', [TodoController::class, 'updateStatus']);
+Route::post('/checkAll', [TodoController::class, 'checkAll']);
+Route::post('/uncheckAll', [TodoController::class, 'uncheckAll']);
+Route::delete('/deleteList/{id}', [TodoController::class, 'destroy']);
+Route::delete('/clearCompleted', [TodoController::class, 'clearCompleted']);
