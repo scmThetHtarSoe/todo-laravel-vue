@@ -35,6 +35,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const message = localStorage.getItem("msg");
   const token = sessionStorage.getItem("token");
   const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
 
@@ -44,6 +45,13 @@ router.beforeEach((to, from, next) => {
     next("/");
   } else {
     next();
+    if (to.name === "todo" && token && from.name === "login") {
+      alert("User Logged In Successfully!");
+    }
+    if (to.name === "login" && !token && from.name === "register" && message) {
+      alert("User Registered Successfully!");
+      localStorage.removeItem("msg");
+    }
   }
 });
 

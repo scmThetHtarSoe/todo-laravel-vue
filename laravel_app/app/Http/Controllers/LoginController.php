@@ -54,10 +54,11 @@ class LoginController extends Controller
     public function processLogin(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required'
         ], [
             "email.required" => "Please Enter Your Email!",
+            "email.email" => "Invalid Email!",
             "password.required" => "Please Enter Your Password!",
         ]);
         if ($validator->fails()) {

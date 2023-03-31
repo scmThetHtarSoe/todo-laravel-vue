@@ -74,6 +74,7 @@ export default {
           if (response.data.msg == "User Created Successfully!!!") {
             this.name = this.email = this.password = "";
             this.$router.push("/login");
+            localStorage.setItem("msg", response.data.msg);
           } else {
             this.errMsg = response.data;
           }
