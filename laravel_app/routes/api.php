@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\TodoController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,7 @@ Route::post('/checkAll', [TodoController::class, 'checkAll']);
 Route::post('/uncheckAll', [TodoController::class, 'uncheckAll']);
 Route::delete('/deleteList/{id}', [TodoController::class, 'destroy']);
 Route::delete('/clearCompleted', [TodoController::class, 'clearCompleted']);
+
+Route::post('/login', [LoginController::class, "processLogin"]);
+Route::post('/register', [LoginController::class, "processRegister"]);
+Route::post('/logout', [LoginController::class, "processLogout"]);
